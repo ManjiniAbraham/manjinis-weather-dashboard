@@ -3,3 +3,31 @@
     font-size: 30px;
     background-color: rgb(24, 24, 128);
 }
+.input-field{
+    border: 2px solid;
+    border-radius: 5px;
+        
+}
+
+.weather-forcast{
+    padding-left: 15px;
+
+}
+.materialize-textarea {
+    border-bottom: none!important;
+}
+.search-list{
+    text-align: center;
+    font-size: 20px;
+    
+}
+.search-btn{
+    padding: 5px;
+    border-radius: 5px;
+    line-height: 15px;
+    width: 100%;
+}
+.btn{
+  width: 100%;
+  background-color: rgb(89, 185, 245);
+}
