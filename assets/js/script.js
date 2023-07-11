@@ -14,7 +14,7 @@ $(function() {
 });
 
 
-//search button funtionality . here i am taking the value from the text input and checking if its already in the array. if yes do not duplicate else add it to the array searchItems.
+//search button funtionality and checking for duplicates.
 function searchCity(){
 
   var city= $.trim($("#city").val());
@@ -34,31 +34,26 @@ function searchCity(){
 }
 
 
-//here i am using the array searchItems and displaying the list in the left section as buttons
+//Displaying the search list as buttons
 
 function renderSearchHistory() {
 
-  var div = $("#searchListContainer"); // The div container where the list will be appended
- 
-  var ul = $("<ul>");// Create the <ul> element
+  var div = $("#searchListContainer"); // The div container where the list will be appended 
+  var ul = $("<ul>");
 
   // Loop through each item in the searchItems array
   for (var i = 0; i < searchItems.length; i++) {
     var item = searchItems[i];
 
     // Create a button element for the item
-    var button = $("<button>").text(item).addClass("search-btn");
-
-    // Create an <li> element for the button
-    var li = $("<li>").append(button);    
-
-    // Append the <li> element to the <ul> element
-      ul.append(li);
+    var button = $("<button>").text(item).addClass("search-btn");    
+    var li = $("<li>").append(button);       
+    ul.append(li);
   }
 
   if (searchItems.length > 0){
-    div.empty(); //clearing the div
-    div.append(ul); // Append the <ul> element to the div container
+    div.empty(); 
+    div.append(ul); 
     $("button[class*='search-btn']").on("click", function() {
         var city = $(this).text();  
         getWeather(city);
@@ -67,8 +62,7 @@ function renderSearchHistory() {
  
 }
 
-
-//From the json response of the API call, I am storing values of desired fields in a variable and storing them in an array named weatherData.
+//From the json response of the API call, storing values of desired fields.
 function getWeather(city) {
     
     if ($.trim(city)== "") {
@@ -139,8 +133,7 @@ function getWeather(city) {
             cityLon:cityLon,
             forecast: forecastWeatherData
           };
-          
-          
+                    
           // if the city does not exist in the forecast, add the data, else update it
           if (findCity === -1){
             weatherData.push(weatherInfo); // Add the weather information to the array
@@ -155,8 +148,7 @@ function getWeather(city) {
         });
         
         localStorage.setItem('weatherData', JSON.stringify(weatherData));
-        
-        
+                
       })
       .catch(function (error) {
         // Handle any errors that occur during the request
@@ -164,8 +156,7 @@ function getWeather(city) {
       });
 }
 
-
-//Here i am trying to append the desired data stored in the weatherData array to display on the page.
+//append the desired data stored in the weatherData array to display on the page.
 function displayWeatherInfo(city) {
 
   var findCity = weatherData.findIndex(index =>index.place.toLowerCase() === city.toLowerCase());
