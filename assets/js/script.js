@@ -99,7 +99,7 @@ function getWeather(city) {
         })
         .then(function(data) {
             var forecastList = data.list;
-            console.log(forecastList);
+            //console.log(forecastList);
             // Loop through the forecast list
             for (let i = 4; i < forecastList.length; i += 8) {
               forecast = forecastList[i];
