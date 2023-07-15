@@ -1,5 +1,5 @@
   
-var APIKey="598dc121f9e0e587ba86da32aa3fa923";
+var APIKey="de94edf845905cc2b48a882c85fec6f5";
 var searchbtn=$('#searchbtn');
 var searchItems = localStorage.searchItems ? JSON.parse(localStorage.searchItems) : [];
 var weatherData = []; // Array to store weather data
